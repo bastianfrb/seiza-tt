@@ -9,16 +9,16 @@ import { ApiService } from '../../core/services/api/api.service';
 export class AuthService {
 
   constructor(
-    private apiService: ApiService,
-    private toastr: ToastrService,
-    private router: Router
+    private _apiService: ApiService,
+    private _toastr: ToastrService,
+    private _router: Router
   ) { }
 
   public doLogin(loginForm: { username: string, password: string }): void {
-      this.apiService.get(`cliente/${loginForm.username}`).subscribe({
+      this._apiService.get(`cliente/${loginForm.username}`).subscribe({
         next: (response) => sessionStorage.setItem('auth', JSON.stringify(response)),
-        error: () => this.toastr.error('Credenciales incorrectas'),
-        complete: () => this.router.navigate(['home'])
+        error: () => this._toastr.error('Credenciales incorrectas'),
+        complete: () => this._router.navigate(['home'])
       });
   }
 
@@ -28,6 +28,6 @@ export class AuthService {
 
   public logout(): void {
     sessionStorage.removeItem('auth');
-    this.router.navigate(['/login']);
+    this._router.navigate(['/login']);
   }
 }

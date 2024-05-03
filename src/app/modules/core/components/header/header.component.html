@@ -1,0 +1,13 @@
+<header>
+    <mat-toolbar color="primary">
+        <div class="w-100 flex-row space-between">
+            <div>Seiza</div>
+            <div>
+                <button mat-button [matMenuTriggerFor]="menu">{{ user.nombre }}</button>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item (click)="logout()">Cerrar sesión</button>
+                </mat-menu>
+            </div>
+        </div>
+    </mat-toolbar>
+</header>

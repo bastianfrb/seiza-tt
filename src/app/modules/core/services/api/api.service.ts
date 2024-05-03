@@ -9,11 +9,11 @@ const PORT = '8080';
   providedIn: 'root'
 })
 export class ApiService {
-    private baseUrl = `${URL}:${PORT}`;
+    private _baseUrl = `${URL}:${PORT}`;
 
-    constructor(private http: HttpClient) {}
+    constructor(private _http: HttpClient) {}
 
     public get(path: string): Observable<any> {
-        return this.http.get(`${this.baseUrl}/${path}`);
+        return this._http.get(`${this._baseUrl}/${path}`);
     }
 }

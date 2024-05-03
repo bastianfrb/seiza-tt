@@ -12,22 +12,22 @@ export class LoginLayoutComponent implements OnInit {
   public loginForm!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService
+    private _formBuilder: FormBuilder,
+    private _authService: AuthService
   ) { }
 
   ngOnInit(): void {
-    this.setForm();
+    this._setForm();
   }
 
   public onSubmit(): void {
     if (this.loginForm.valid) {
-      this.authService.doLogin(this.loginForm.value);
+      this._authService.doLogin(this.loginForm.value);
     }
   }
 
-  private setForm(): void {
-    this.loginForm = this.formBuilder.group({
+  private _setForm(): void {
+    this.loginForm = this._formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });

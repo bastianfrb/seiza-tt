@@ -1,0 +1,34 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.home {
+    gap: 32px;
+
+    padding: 16px;
+
+    &__product-list {
+        &__item {
+            border: 1px solid $gray6;
+            border-radius: 4px;
+            margin-top: 8px;
+            padding: 16px;
+
+            div {
+                text-align: center;
+                flex: 1 1 0px;
+                
+                &:first-child {
+                    text-align: left;
+                }
+
+                &:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    // Desktop size
+    @media (min-width: 1024px) {
+
+    }
+}

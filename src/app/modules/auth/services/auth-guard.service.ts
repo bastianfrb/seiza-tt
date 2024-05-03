@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
 export class AuthGuardService {
 
   constructor(
-    private authService: AuthService,
-    private router: Router
+    private _authService: AuthService,
+    private _router: Router
   ) {}
 
   public canActivate(): boolean {
-    if (!this.authService.isAuthorized()) {
-      this.router.navigate(['/login']);
+    if (!this._authService.isAuthorized()) {
+      this._router.navigate(['/login']);
     }
 
-    return this.authService.isAuthorized();
+    return this._authService.isAuthorized();
   }
 }

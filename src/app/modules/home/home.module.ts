@@ -4,6 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomeComponent } from './components/home/home.component';
 import { HomeRoutingModule } from './home-routing.module';
+import { CoreModule } from '../core/core.module';
+import { ProductService } from './services/product.service';
 
 
 
@@ -15,7 +17,9 @@ import { HomeRoutingModule } from './home-routing.module';
     CommonModule,
     HomeRoutingModule,
     MatButtonModule,
-    MatToolbarModule
-  ]
+    MatToolbarModule,
+    CoreModule
+  ],
+  providers: [ProductService]
 })
 export class HomeModule { }
