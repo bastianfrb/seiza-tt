@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [

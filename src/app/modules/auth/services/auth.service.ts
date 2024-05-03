@@ -17,11 +17,8 @@ export class AuthService {
   ) { }
 
   public doLogin(loginForm: { username: string, password: string }): void {
-      this.apiService.post('login', loginForm).subscribe({
-        next: (response) => {
-          this.storageService.saveSession('auth', response);
-          this.storageService.saveSession('access_token', response.token);
-        },
+      this.apiService.get(`cliente/${loginForm.username}`).subscribe({
+        next: (response) => this.storageService.saveSession('auth', response),
         error: () => this.toastr.error('Credenciales incorrectas'),
         complete: () => this.router.navigate(['home'])
       });
@@ -33,7 +30,6 @@ export class AuthService {
 
   public logout(): void {
     this.storageService.deleteSession('auth');
-    this.storageService.deleteSession('access_token');
     this.router.navigate(['/login']);
   }
 }
