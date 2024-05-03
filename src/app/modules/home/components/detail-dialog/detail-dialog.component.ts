@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
+import { IBalanceDetail } from '../../interfaces/balance-detail';
+import { IProduct } from '../../interfaces/product';
 
 @Component({
   selector: 'app-detail-dialog',
@@ -9,15 +11,16 @@ import { ProductService } from '../../services/product.service';
 })
 export class DetailDialogComponent implements OnInit {
 
-  public productDetail: any;
+  public balanceDetail: any;
   public ignoreColumns: string[];
   public keyMapper: any;
-  public objectKeys: (list: any[]) => string[];
+  public objectKeys: (item: any) => string[];
 
   constructor(
     private _productService: ProductService,
-    @Inject(MAT_DIALOG_DATA) public productNumber: string
+    @Inject(MAT_DIALOG_DATA) public product: IProduct
   ) {
+    this.objectKeys = Object.keys;
     this.ignoreColumns = ['id', 'numeroProducto'];
 
     this.keyMapper = {
@@ -25,12 +28,19 @@ export class DetailDialogComponent implements OnInit {
       montoContable: 'Monto Contable',
       montoUtilizado: 'Monto Utilizado'
     };
-    this.objectKeys = Object.keys;
+
+    this.balanceDetail = {
+      id: 0,
+      montoContable: 0,
+      montoDisponible: 0,
+      montoUtilizado: 0,
+      numeroProducto: ''
+    };
   }
 
   public ngOnInit(): void {
-    this._productService.getDetailByProductNumber(this.productNumber).subscribe((result) => {
-      this.productDetail = result;
+    this._productService.getDetailByProductNumber(this.product.numero).subscribe((result) => {
+      this.balanceDetail = result;
     });
   }
 

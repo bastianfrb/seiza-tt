@@ -27,7 +27,11 @@ export class HomeComponent implements OnInit {
     this.productList = this._productService.getProductListByRut(this.user.rut);
   }
 
-  public openDetailDialog(productNumber: string): void {
-    this._matDialog.open(DetailDialogComponent, { data: productNumber });
+  public openDetailDialog(product: IProduct): void {
+    this._matDialog.open(DetailDialogComponent, { 
+      data: product,
+      width: '540px',
+      minWidth: '360px'
+    });
   }
 }

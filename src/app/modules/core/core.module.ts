@@ -4,10 +4,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { HeaderComponent } from './components/header/header.component';
+import { CurrencyFormatPipe } from './pipes/currency-format.pipe';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    CurrencyFormatPipe
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { HeaderComponent } from './components/header/header.component';
     MatMenuModule
   ],
   exports: [
-    HeaderComponent
+    HeaderComponent,
+    CurrencyFormatPipe
   ]
 })
 export class CoreModule { }
