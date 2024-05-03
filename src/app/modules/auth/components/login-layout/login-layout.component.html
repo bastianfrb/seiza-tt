@@ -1,0 +1,34 @@
+<div class="login flex-centered">
+  <form [formGroup]="loginForm">
+    <mat-card class="login-block">
+      <mat-card-header>
+        <mat-card-title>
+          <div class="flex-row flex-centered space-between">
+            <div>Dukivet</div>
+            <div>
+              <img width="32" src="../../../../../assets/img/logo.png">
+            </div>
+          </div>
+            
+        </mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="login-form">
+          <mat-form-field appearance="outline">
+            <mat-label>Rut (sin puntos ni guion)</mat-label>
+            <input matInput placeholder="12345678k" formControlName="username" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" formControlName="password" />
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="onSubmit()">{{ 'LOGIN.login' | translate }}</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>
