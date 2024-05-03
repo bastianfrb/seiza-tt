@@ -23,7 +23,12 @@
         </div>
 
         <mat-card-actions align="end">
-          <button mat-raised-button color="primary" (click)="onSubmit()">Ingresar</button>
+          <button mat-raised-button color="primary" [disabled]="isLoading" (click)="onSubmit()">
+            <ng-container *ngIf="!isLoading; else spinner">Ingresar</ng-container>
+            <ng-template #spinner>
+              <mat-spinner color="secondary" [diameter]="36"></mat-spinner>
+            </ng-template>
+          </button>
         </mat-card-actions>
       </mat-card-content>
     </mat-card>

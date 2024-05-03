@@ -10,11 +10,14 @@ import { AuthService } from 'src/app/modules/auth/services/auth.service';
 export class LoginLayoutComponent implements OnInit {
 
   public loginForm!: FormGroup;
+  public isLoading: boolean;
 
   constructor(
     private _formBuilder: FormBuilder,
     private _authService: AuthService
-  ) { }
+  ) {
+    this.isLoading = false;
+  }
 
   ngOnInit(): void {
     this._setForm();
@@ -22,7 +25,12 @@ export class LoginLayoutComponent implements OnInit {
 
   public onSubmit(): void {
     if (this.loginForm.valid) {
-      this._authService.doLogin(this.loginForm.value);
+      this.isLoading = true;
+      this.loginForm.disable();
+      this._authService.doLogin(this.loginForm.value).then(() => {
+        this.isLoading = false;
+        this.loginForm.enable();
+      });
     }
   }
 

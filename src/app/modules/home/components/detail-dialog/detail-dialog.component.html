@@ -2,7 +2,7 @@
     <div class="typography__h2">Detalle de saldo</div>
     <div class="typography__body-2">Número de cuenta: {{ product.numero }}</div>
 
-    <div class="detail-dialog__balance flex-col">
+    <div *ngIf="balanceDetail; else loading" class="detail-dialog__balance flex-col">
         <ng-container *ngFor="let key of objectKeys(balanceDetail)">
             <div *ngIf="!ignoreColumns.includes(key) && balanceDetail[key]" class="detail-dialog__balance__item flex-col">
                 <div class="typography__hint-1">{{ keyMapper[key] }}</div>
@@ -10,4 +10,16 @@
             </div>
         </ng-container>
     </div>
+
+    <ng-template #loading>
+        <div class="skeleton-loading">
+            <div class="skeleton-bg"></div>
+            <div class="skeleton"></div>
+        </div>
+
+        <div class="skeleton-loading">
+            <div class="skeleton-bg"></div>
+            <div class="skeleton"></div>
+        </div>
+    </ng-template>
 </div>

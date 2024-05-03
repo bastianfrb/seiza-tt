@@ -9,6 +9,7 @@ import { CoreModule } from '../core/core.module';
 import { ProductService } from './services/product.service';
 import { DetailDialogComponent } from './components/detail-dialog/detail-dialog.component';
 import { NotRequestedComponent } from './components/not-requested/not-requested.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 
@@ -24,7 +25,8 @@ import { NotRequestedComponent } from './components/not-requested/not-requested.
     HomeRoutingModule,
     MatButtonModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   providers: [ProductService]
 })

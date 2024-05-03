@@ -12,7 +12,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DetailDialogComponent implements OnInit {
 
-  public balanceDetail: any;
+  public balanceDetail!: any;
   public ignoreColumns: string[];
   public keyMapper: any;
   public objectKeys: (item: any) => string[];
@@ -29,14 +29,6 @@ export class DetailDialogComponent implements OnInit {
       montoDisponible: 'Monto Disponible',
       montoContable: 'Monto Contable',
       montoUtilizado: 'Monto Utilizado'
-    };
-
-    this.balanceDetail = {
-      id: 0,
-      montoContable: 0,
-      montoDisponible: 0,
-      montoUtilizado: 0,
-      numeroProducto: ''
     };
   }
 

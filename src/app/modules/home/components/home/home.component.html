@@ -10,23 +10,39 @@
                 Listado de Productos
             </div>
 
-            <div *ngFor="let product of productList | async" class="typography__body-2">
-                <div class="home__product-list__item flex-row flex-centered space-between">
-                    <div class="flex-col">
-                        <div class="typography__hint-1">{{ product.tipo }}</div>
-                        <div>{{ product.numero }}</div>
-                    </div>
-                    <div>{{ product.moneda }}</div>
-                    <div class="flex-col">
-                        <div>
-                            <button mat-button (click)="openCommonDialog()">Pagar</button>
+            <ng-container *ngIf="productList; else loading">
+                <div *ngFor="let product of productList" class="typography__body-2">
+                    <div class="home__product-list__item flex-row flex-centered space-between">
+                        <div class="flex-col">
+                            <div class="typography__hint-1">{{ product.tipo }}</div>
+                            <div>{{ product.numero }}</div>
                         </div>
-                        <div>
-                            <button mat-button (click)="openDetailDialog(product)">Ver detalle</button>
+                        <div class="flex-col">
+                            <div class="typography__hint-1">Divisa</div>
+                            <div>{{ product.moneda }}</div>
+                        </div>
+                        <div class="flex-col">
+                            <div>
+                                <button mat-button (click)="openCommonDialog()">Pagar</button>
+                            </div>
+                            <div>
+                                <button mat-button (click)="openDetailDialog(product)">Ver detalle</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
+            <ng-template #loading>
+                <div class="skeleton-loading">
+                    <div class="skeleton-bg"></div>
+                    <div class="skeleton"></div>
+                </div>
+
+                <div class="skeleton-loading">
+                    <div class="skeleton-bg"></div>
+                    <div class="skeleton"></div>
+                </div>
+            </ng-template>
         </div>
     </div>
 </section>
