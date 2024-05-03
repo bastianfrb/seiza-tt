@@ -17,8 +17,13 @@
                         <div>{{ product.numero }}</div>
                     </div>
                     <div>{{ product.moneda }}</div>
-                    <div>
-                        <button mat-button (click)="openDetailDialog(product)">Ver detalle</button>
+                    <div class="flex-col">
+                        <div>
+                            <button mat-button (click)="openCommonDialog()">Pagar</button>
+                        </div>
+                        <div>
+                            <button mat-button (click)="openDetailDialog(product)">Ver detalle</button>
+                        </div>
                     </div>
                 </div>
             </div>

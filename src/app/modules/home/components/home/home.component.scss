@@ -26,13 +26,11 @@
                 text-align: center;
                 flex: 1 1 0px;
                 
-                &:first-child {
-                    div {
-                        text-align: left;
-                    }
+                &:first-child div {
+                    text-align: left;
                 }
 
-                &:last-child {
+                &:last-child div {
                     text-align: right;
                 }
             }

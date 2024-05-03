@@ -5,6 +5,7 @@ import { Observable, of } from 'rxjs';
 import { IProduct } from '../../interfaces/product';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailDialogComponent } from '../detail-dialog/detail-dialog.component';
+import { NotRequestedComponent } from '../not-requested/not-requested.component';
 
 @Component({
   selector: 'app-home',
@@ -33,5 +34,9 @@ export class HomeComponent implements OnInit {
       width: '540px',
       minWidth: '360px'
     });
+  }
+
+  public openCommonDialog(): void {
+    this._matDialog.open(NotRequestedComponent);
   }
 }

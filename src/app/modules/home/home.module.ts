@@ -8,13 +8,15 @@ import { HomeRoutingModule } from './home-routing.module';
 import { CoreModule } from '../core/core.module';
 import { ProductService } from './services/product.service';
 import { DetailDialogComponent } from './components/detail-dialog/detail-dialog.component';
+import { NotRequestedComponent } from './components/not-requested/not-requested.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    DetailDialogComponent
+    DetailDialogComponent,
+    NotRequestedComponent
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
 import { IBalanceDetail } from '../../interfaces/balance-detail';
 import { IProduct } from '../../interfaces/product';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-detail-dialog',
@@ -18,6 +19,7 @@ export class DetailDialogComponent implements OnInit {
 
   constructor(
     private _productService: ProductService,
+    private _toastrService: ToastrService,
     @Inject(MAT_DIALOG_DATA) public product: IProduct
   ) {
     this.objectKeys = Object.keys;
@@ -39,8 +41,9 @@ export class DetailDialogComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._productService.getDetailByProductNumber(this.product.numero).subscribe((result) => {
-      this.balanceDetail = result;
+    this._productService.getDetailByProductNumber(this.product.numero).subscribe({
+      next: (result) => this.balanceDetail = result,
+      error: () => this._toastrService.error('No se pudo obtener información de este producto')
     });
   }
 
