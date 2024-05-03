@@ -16,9 +16,4 @@ export class ApiService {
     public get(path: string): Observable<any> {
         return this.http.get(`${this.baseUrl}/${path}`);
     }
-
-    public post(path: string, params?: any): Observable<any> {
-        let baseUrl = this.baseUrl;
-        return this.http.post(`${baseUrl}/${path}`, params);
-    }
 }

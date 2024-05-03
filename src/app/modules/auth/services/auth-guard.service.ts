@@ -13,7 +13,7 @@ export class AuthGuardService {
     private router: Router
   ) {}
 
-  public canActivate(): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  public canActivate(): boolean {
     if (!this.authService.isAuthorized()) {
       this.router.navigate(['/login']);
     }
