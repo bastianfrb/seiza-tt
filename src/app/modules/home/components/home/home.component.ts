@@ -3,6 +3,8 @@ import { IUser } from 'src/app/modules/core/interfaces/user';
 import { ProductService } from '../../services/product.service';
 import { Observable, of } from 'rxjs';
 import { IProduct } from '../../interfaces/product';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailDialogComponent } from '../detail-dialog/detail-dialog.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,8 @@ export class HomeComponent implements OnInit {
   public productList: Observable<IProduct[]>;
 
   constructor(
-    private _productService: ProductService
+    private _productService: ProductService,
+    private _matDialog: MatDialog
   ) {
     this.user = JSON.parse(sessionStorage.getItem('auth') as any) as IUser;
     this.productList = of([]);
@@ -22,5 +25,9 @@ export class HomeComponent implements OnInit {
 
   public ngOnInit(): void {
     this.productList = this._productService.getProductListByRut(this.user.rut);
+  }
+
+  public openDetailDialog(productNumber: string): void {
+    this._matDialog.open(DetailDialogComponent, { data: productNumber });
   }
 }

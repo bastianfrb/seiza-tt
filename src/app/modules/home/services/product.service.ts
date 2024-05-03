@@ -6,13 +6,13 @@ import { IProduct } from '../interfaces/product';
 @Injectable()
 export class ProductService {
 
-  private _baseUrl: string;
-
-  constructor(private _apiService: ApiService) {
-    this._baseUrl = 'productos';
-  }
+  constructor(private _apiService: ApiService) { }
 
   public getProductListByRut(rut: string): Observable<IProduct[]> {
-    return this._apiService.get(`${this._baseUrl}/${rut}`);
+    return this._apiService.get(`productos/${rut}`);
+  }
+
+  public getDetailByProductNumber(productNumber: string): Observable<any> {
+    return this._apiService.get(`saldo/${productNumber}`);
   }
 }

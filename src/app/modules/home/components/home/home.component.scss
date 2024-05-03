@@ -6,9 +6,19 @@
     padding: 16px;
 
     &__product-list {
+
+        .product-item-container {
+            width: 100%;
+
+            @media (min-width: 1024px) {
+                width: 50%;
+            }
+        }
+
         &__item {
             border: 1px solid $gray6;
             border-radius: 4px;
+            
             margin-top: 8px;
             padding: 16px;
 
@@ -17,7 +27,9 @@
                 flex: 1 1 0px;
                 
                 &:first-child {
-                    text-align: left;
+                    div {
+                        text-align: left;
+                    }
                 }
 
                 &:last-child {

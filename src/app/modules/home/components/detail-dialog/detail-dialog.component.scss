@@ -1,0 +1,13 @@
+@import '../../../../../assets/styles/colors.scss';
+
+.detail-dialog {
+    &__balance {
+        margin-top: 16px;
+    
+        &__item {
+            border: 1px solid $gray6;
+            border-radius: 4px;
+            padding: 8px;
+        }
+    }
+}

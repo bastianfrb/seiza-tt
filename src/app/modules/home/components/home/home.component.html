@@ -12,10 +12,13 @@
 
             <div *ngFor="let product of productList | async" class="typography__body-2">
                 <div class="home__product-list__item flex-row flex-centered space-between">
-                    <div>{{ product.tipo }}</div>
+                    <div class="flex-col">
+                        <div class="typography__hint-1">{{ product.tipo }}</div>
+                        <div>{{ product.numero }}</div>
+                    </div>
                     <div>{{ product.moneda }}</div>
                     <div>
-                        <button mat-button>Ver detalle</button>
+                        <button mat-button (click)="openDetailDialog(product.numero)">Ver detalle</button>
                     </div>
                 </div>
             </div>
