@@ -9,6 +9,7 @@ import { AuthService } from './auth.service';
 import { LoginLayoutComponent } from '../components/login-layout/login-layout.component';
 import { ApiService } from '../../core/services/api/api.service';
 import { HomeComponent } from '../../home/components/home/home.component';
+import { USER_MOCK } from '../../core/tests/mocks';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -58,14 +59,6 @@ describe('AuthService', () => {
 
     let httpMock: HttpTestingController;
 
-    const userMock = {
-      id: 1,
-      rut: '1-9',
-      nombre: 'Juan',
-      apellido: 'Perez',
-      email: 'jperez@demo.cl',
-    };
-
     beforeEach(() => {
       httpMock = TestBed.inject(HttpTestingController);
     });
@@ -78,7 +71,7 @@ describe('AuthService', () => {
       service.doLogin({ username: '1-9', password: '123' });
       const req = httpMock.expectOne(`${url}/cliente/1-9`);
       expect(req.request.method).toBe('GET');
-      req.flush(userMock);
+      req.flush(USER_MOCK);
     });
   
     it('should logout cleaning session and going to login', () => {

@@ -51,19 +51,10 @@ describe('LoginLayoutComponent', () => {
     expect(spyOnSubmit).toHaveBeenCalledTimes(0);
   });
 
-  it('should do nothing on invalid form', () => {
-    const authService = TestBed.inject(AuthService);
-    const spyOnSubmit = spyOn(authService, 'doLogin');
-    component.ngOnInit();
-    // Initialize form with "empty" values (invalid)
-    component.loginForm.patchValue({ username: '', password: '' });
-    component.onSubmit();
-    expect(spyOnSubmit).not.toHaveBeenCalled();
-  });
 
   it('should submit on valid form', () => {
     const authService = TestBed.inject(AuthService);
-    const spyOnSubmit = spyOn(authService, 'doLogin');
+    const spyOnSubmit = spyOn(authService, 'doLogin').and.callThrough();
     component.ngOnInit();
     // Initialize form with "empty" values (invalid)
     component.loginForm.patchValue({ username: '123', password: '123' });
